@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fees Collection</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        height: 100vh;
+        width: 250px;
+        position: fixed;
+        background-color: #0f265e;
+        color: #fff;
+        padding-top: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .sidebar h3 {
+        text-align: center;
+        font-size: 24px;
+        color: #ffffff;
+        font-weight: 600;
+        margin-bottom: 30px;
+      }
+      .sidebar .nav-link {
+        color: #bdc3c7;
+        font-size: 16px;
+        margin: 5px 10px;
+        border-radius: 5px;
+      }
+      .sidebar .nav-link.active,
+      .sidebar .nav-link:hover {
+        background-color: #ffffff;
+        color: #0f265e;
+      }
+
+      /* Main Content */
+      .content {
+        margin-left: 260px;
+        padding: 40px;
+        background-color: #f4f6f9;
+      }
+      .content h2 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #34495e;
+      }
+      .btn-primary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background-color: #2667ff;
+      }
+      .btn-primary:hover {
+        background-color: #194fcf;
+      }
+
+      /* Table Styles */
+      .table {
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      }
+      .table thead th {
+        background-color: #2667ff;
+        color: #ffffff;
+        border: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+      .table tbody tr:hover {
+        background-color: #ecf0f1;
+      }
+      .table tbody td {
+        vertical-align: middle;
+      }
+      .table tbody tr td img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+
+      /* Status Styles */
+      .status-paid {
+        background-color: #2ecc71;
+        color: #ffffff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .status-unpaid {
+        background-color: #e74c3c;
+        color: #ffffff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      /* Hide all content sections initially */
+      .content-section {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Global SmartKidz Preschool</h3>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            href="#"
+            onclick="showContent('feesCollection')"
+            >Dashboard</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="showContent('addFees')"
+            >Add Fees</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <div id="feesCollection" class="content-section" style="display: block">
+        <div
+          class="content-section d-flex justify-content-between align-items-center mb-4 flex-wrap"
+        >
+          <h2>Fees Collections</h2>
+          <div
+            class="d-flex justify-content-between align-items-center me-2 flex-wrap"
+          >
+            <button class="btn btn-primary m-2">
+              <i class="fas fa-download"></i> Download
+            </button>
+            <button
+              class="btn btn-primary m-2"
+              onclick="showContent('addFees')"
+            >
+              <i class="fas fa-plus"></i> Add Fees
+            </button>
+          </div>
+        </div>
+
+        <!-- Fees Table -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Fees Type</th>
+              <th>Amount</th>
+              <th>Pending</th>
+              <th>Paid Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PRE1234</td>
+              <td>Nathan Humphries</td>
+              <td>Male</td>
+              <td>Exam Fees</td>
+              <td>278</td>
+              <td>0</td>
+              <td>17 Nov 2020</td>
+              <td><span class="status-paid">Paid</span></td>
+            </tr>
+            <tr>
+              <td rowspan="3">PRE1252</td>
+              <td rowspan="3">Joe Kelley</td>
+              <td rowspan="3">Female</td>
+              <td rowspan="3">Transport Fees</td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>250</td>
+              <td>17 Oct 2020</td>
+              <td><span class="status-unpaid">Unpaid</span></td>
+            </tr>
+            <tr>
+              <td>250</td>
+              <td>0</td>
+              <td>19 Oct 2020</td>
+              <td><span class="status-paid">Paid</span></td>
+            </tr>
+            <tr>
+              <td rowspan="4">PRE1252</td>
+              <td rowspan="4">Joe Kelley</td>
+              <td rowspan="4">Female</td>
+              <td rowspan="4">Exam Fees</td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>250</td>
+              <td>17 Oct 2020</td>
+              <td><span class="status-unpaid">Unpaid</span></td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>150</td>
+              <td>18 Oct 2020</td>
+              <td><span class="status-unpaid">Unpaid</span></td>
+            </tr>
+            <tr>
+              <td>150</td>
+              <td>0</td>
+              <td>19 Oct 2020</td>
+              <td><span class="status-paid">Paid</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="addFees" class="content-section">
+        <h2>Add Fees</h2>
+        <div class="breadcrumb">Accounts / Add Fees</div>
+
+        <div class="card p-4 mt-3">
+          <h5>Fees Information</h5>
+          <form onsubmit="addFeeEntry(event)">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label for="studentId" class="form-label"
+                  >Student ID <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="studentId"
+                  placeholder="Student ID"
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="studentName" class="form-label"
+                  >Student Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="studentName"
+                  placeholder="Student Name"
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="gender" class="form-label"
+                  >Gender <span class="text-danger">*</span></label
+                >
+                <select id="gender" class="form-select" required>
+                  <option selected disabled>Select Gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="feesType" class="form-label"
+                  >Fees Type <span class="text-danger">*</span></label
+                >
+                <select id="feesType" class="form-select" required>
+                  <option selected disabled>Select Type</option>
+                  <option>Exam Fees</option>
+                  <option>Transport Fees</option>
+                  <option>Mess Fees</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="feesAmount" class="form-label"
+                  >Fees Amount <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="feesAmount"
+                  placeholder="Fees Amount"
+                  required
+                />
+              </div>
+
+              <div class="col-md-4">
+                <label for="pendingAmount" class="form-label"
+                  >Pending Amount</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="pendingAmount"
+                  placeholder="Pending Amount"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="paidDate" class="form-label">Paid Date <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="paidDate" placeholder="DD-MM-YYYY" required />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="index.js"></script>
+
+    
+  </body>
+</html>
