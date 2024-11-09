@@ -24,7 +24,7 @@ function addFeeEntry(event) {
       ? 0
       : document.getElementById("pendingAmount").value;
   const paidDate = document.getElementById("paidDate").value;
-  const paymentModeSelected = document.querySelector(
+  const paymentMode = document.querySelector(
     'input[name="payment"]:checked'
   ).value;
 
@@ -48,7 +48,7 @@ function addFeeEntry(event) {
     amount: feesAmount,
     pendingAmount,
     paidDate,
-    paymentModeSelected,
+    paymentMode,
   });
 
   // Add the new payment to the student's payment array

@@ -12,7 +12,7 @@ function downloadExcel() {
           "Class": student.studentClass,
           "Fees Type": student.feesType,
           "Amount": payment.amount,
-          "Payment Mode": payment.paymentMode.toUpperCase(),
+          "Payment Mode": payment.paymentMode,
           "Pending Amount": payment.pendingAmount,
           "Paid Date": payment.paidDate,
           "Status": payment.pendingAmount === 0 ? "Paid" : "Unpaid"
