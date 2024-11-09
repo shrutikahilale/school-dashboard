@@ -2,7 +2,7 @@ const students = [
   {
     studentId: "PRE1234",
     studentName: "Nathan Humphries",
-    gender: "Male",
+    studentClass: "Nursery Mercury",
     feesType: "Exam Fees",
     payments: [
       {
@@ -15,7 +15,7 @@ const students = [
   {
     studentId: "PRE1252",
     studentName: "Joe Kelley",
-    gender: "Female",
+    studentClass: "Nursery Venus",
     feesType: "Transport Fees",
     payments: [
       {
@@ -33,7 +33,7 @@ const students = [
   {
     studentId: "PRE1252",
     studentName: "Joe Kelley",
-    gender: "Female",
+    studentClass: "Nursery Earth",
     feesType: "Admission Fees",
     payments: [
       {
@@ -70,7 +70,7 @@ function populateTable() {
     row.innerHTML = 
         `<td rowspan=${numPaymentEntries}>${student.studentId}</td>
         <td rowspan=${numPaymentEntries}>${student.studentName}</td>
-        <td rowspan=${numPaymentEntries}>${student.gender}</td>
+        <td rowspan=${numPaymentEntries}>${student.studentClass}</td>
         <td rowspan=${numPaymentEntries}>${student.feesType}</td>`;
 
     tableBody.appendChild(row);
@@ -103,7 +103,7 @@ function addFeeEntry(event) {
 
   const studentId = document.getElementById("studentId").value;
   const studentName = document.getElementById("studentName").value;
-  const gender = document.getElementById("gender").value;
+  const studentClass = document.getElementById("studentClass").value;
   const feesType = document.getElementById("feesType").value;
   const feesAmount = document.getElementById("feesAmount").value;
   const pendingAmount = document.getElementById("pendingAmount").value == '' || document.getElementById("pendingAmount").value == undefined ? 0 : document.getElementById("pendingAmount").value;
@@ -117,7 +117,7 @@ function addFeeEntry(event) {
     student = {
       studentId,
       studentName,
-      gender,
+      studentClass,
       feesType,
       payments: [],
     };
@@ -134,6 +134,9 @@ function addFeeEntry(event) {
 
   // Re-populate the table
   populateTable();
+
+  console.log(student);
+  console.log(students);
 
   // Clear the form fields
   document.querySelector("#addFees form").reset();
