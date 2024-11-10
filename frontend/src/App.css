@@ -1,7 +1,7 @@
 /* General Styles */
-body {
+* {
   font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
+  font-size: 0.875rem;
 }
 
 /* Sidebar Styles */
@@ -98,8 +98,4 @@ body {
   border-radius: 4px;
   font-size: 13px;
   font-weight: 500;
-}
-/* Hide all content sections initially */
-.content-section {
-  display: none;
 }
